@@ -1,0 +1,35 @@
+<div class="card mt-5">
+  <div class="card-body">
+    <h1 class="text-center">Template Form</h1>
+    <form (ngSubmit)="onGuardar(myForm)" #myForm="ngForm">
+      <div class="form-group py-2">
+        <label>Nombre</label>
+        <input type="text" placeholder="Nombre" class="form-control" #nombre="ngModel" ngModel name="nombre" minlength="5" maxlength="10" required>
+      </div>
+
+      <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div class="alert alert-danger">
+          Este campo es requerido
+        </div>
+      </div>
+
+      <div class="form-group py-2">
+        <label>Ciudad</label>
+        <input type="text" placeholder="Ciudad" class="form-control" #ciudad="ngModel" ngModel name="ciudad" required>
+      </div>
+
+      <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)">
+        <div class="alert alert-danger">
+          Este campo es requerido
+        </div>
+      </div>
+
+      <div class="py-2">
+        <button style="width: 100%;" class="btn btn-success" [disabled]="myForm.invalid">
+          Guardar
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
